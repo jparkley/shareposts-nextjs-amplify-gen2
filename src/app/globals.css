@@ -310,10 +310,14 @@ button:hover {
   /* display: flex;
   justify-content: space-between; */
   padding: 0.5rem 1rem;
+  font-weight: 300;
+  font-family: "system-ui";
 }
 
 .card-body p {
-  margin: 0;
+  font-size: 0.8rem;
+  color: rgb(59, 59, 59);
+  margin: 10px 0 0;
 }
 
 span.date {

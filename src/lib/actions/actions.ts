@@ -7,6 +7,6 @@ export async function createPost(formData: FormData) {
     title: formData.get("title")?.toString() || "",
     content: formData.get("content")?.toString() || "",
   })
-  console.log('after crate', data)
+  console.log('after create', data)
   redirect("/")
 }
