@@ -3,9 +3,9 @@
 import { startTransition, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signOut } from "aws-amplify/auth";
+import { Hub } from "aws-amplify/utils";
 import Link from "next/link";
 import { navRoutes } from "./constants"
-import { Hub } from "aws-amplify/utils";
 
 export default function NavBar ({ isLoggedIn }: { isLoggedIn: boolean }) {
 
@@ -14,7 +14,7 @@ export default function NavBar ({ isLoggedIn }: { isLoggedIn: boolean }) {
   const router = useRouter();
 
   useEffect(() => {
-    const hubCancel = Hub.listen("auth", (data) => {
+    const listnerCancel = Hub.listen("auth", (data) => {
       switch (data.payload.event) {
         case "signedIn":
           SetAuthCheck(true);
@@ -28,7 +28,7 @@ export default function NavBar ({ isLoggedIn }: { isLoggedIn: boolean }) {
           break;
       }
     })
-    return () => hubCancel();
+    return () => listnerCancel();
   }, [router]);
 
   const logOutLogIn = async () => {
@@ -48,11 +48,11 @@ export default function NavBar ({ isLoggedIn }: { isLoggedIn: boolean }) {
     <>
       <div className="navbar">
         <div className="navbar-menu">
-          <img src="./memo.png" alt="Logo" />
-          <h2>Share Special</h2>
+          {/* <img src="./memo.png" alt="Logo" /> */}
+          <h2>Share Posts</h2>
           {routes.map((route) => (
             <Link key={route.href} href={route.href}>{route.label}</Link>
-          ))}          
+          ))}
         </div>
         <div onClick={logOutLogIn}>
           <button>{authCheck ? "Log Out" : "Log In"}</button>

@@ -1,4 +1,4 @@
-import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
+import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -8,11 +8,17 @@ specify that owners, authenticated via your Auth resource can "create",
 authenticated via an API key, can only "read" records.
 =========================================================================*/
 const schema = a.schema({
-  Todo: a
-    .model({
-      content: a.string(),
-    })
-    .authorization([a.allow.owner(), a.allow.public().to(['read'])]),
+  Post: a.model({
+      title: a.string().required(),
+      content: a.string().required(),
+      comments: a.hasMany("Comment"),
+      owner: a.string().authorization([a.allow.owner().to(["read", "delete"])]),
+    }).authorization([a.allow.public().to(["read"]), a.allow.owner()]),
+  Comment: a.model({
+      content: a.string().required(),
+      post: a.belongsTo("Post"),
+      owner: a.string().authorization([a.allow.owner().to(["read", "delete"])]),
+    }).authorization([a.allow.public().to(["read"]), a.allow.owner()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -20,7 +26,7 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: 'apiKey',
+    defaultAuthorizationMode: "apiKey",
     // API Key is used for a.allow.public() rules
     apiKeyAuthorizationMode: {
       expiresInDays: 30,

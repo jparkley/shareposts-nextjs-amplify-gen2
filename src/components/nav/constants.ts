@@ -11,7 +11,6 @@ export const navRoutes = [
   {
     href: "/faq",
     label: "FAQ",
-    needToBeLogged: false,
   },
 
 ];

@@ -3,7 +3,7 @@ import { Alkatra } from "next/font/google"
 import "./globals.css";
 import NavBar from "../components/nav/NavBar";
 import Auth from "@/components/auth/Auth";
-import { isAuthenticated } from "@/utils/amplify-utils";
+import { isAuthenticated } from "@/lib/utils/amplify-utils";
 
 const alkatra = Alkatra({ subsets: ["latin"] });
 
