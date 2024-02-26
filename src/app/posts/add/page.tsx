@@ -3,12 +3,16 @@ import { createPost } from "@/lib/actions/actions"
 
 const AddPost = () => {
   return (
-    <div>
-      <h2>AddPost</h2>
-      <form action={createPost}>
-        <input type="text" name="title" id="title" placeholder='Title' className='' />
-        <input type="text" name="content" id="content" placeholder='content' className='' />
-        <button type="submit">Submit</button>
+    <div className="container-top">
+      <form action={createPost} className="post-form">
+        <div><h2>What's on your mind?</h2></div>
+        <div className="form-content">
+          <input type="text" name="title" id="title" placeholder='Enter post title' />
+          <textarea name="content" id="content" placeholder='Enter content' rows="8"></textarea>
+        </div>
+        <div className="form-button">
+          <button type="submit">Add Post</button>
+        </div>
       </form>
 
     </div>
