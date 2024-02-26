@@ -22,9 +22,7 @@ export default async function RootLayout({
       <body className={alkatra.className}>
         <NavBar isLoggedIn={await isAuthenticated()} />
         <div className="container">
-          <div className="container-middle">
-            <Auth>{children}</Auth>
-          </div>
+          <Auth>{children}</Auth>
         </div>
       </body>
     </html>

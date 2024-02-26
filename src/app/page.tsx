@@ -12,16 +12,18 @@ export default async function Home() {
   console.log('posts ', posts);
 
   return (
-    <main>
       <div className="container">
-        <h2>Share Your Thoughts</h2>
-        {posts && posts.map( (post, idx) => (
-          <div key={idx}>
-          <p>{post.title}</p>
-          <p>content{post.content}</p>
-          </div>
-        ))}
+        <div className="container-header">
+          <h2>Share Your Thoughts</h2>
+        </div>
+        <div className="container-middle">
+          {posts && posts.map( (post, idx) => (
+            <div key={idx} className="card">
+              <div className="card-header">{post.title}</div>
+              <div className="card-body">{post.content}</div>
+            </div>
+          ))}
+        </div>
       </div>
-    </main>
   );
 }

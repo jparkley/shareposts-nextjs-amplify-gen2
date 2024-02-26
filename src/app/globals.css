@@ -188,6 +188,11 @@ button:hover {
   justify-content: center;
   padding: 40px;
 }
+
+.container-header {
+  text-align: center;
+}
+
 .container-top {
   display: flex;
   justify-content: center;
