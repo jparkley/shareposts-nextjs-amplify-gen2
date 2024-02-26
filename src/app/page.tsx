@@ -1,16 +1,14 @@
 import { client } from "@/lib/utils/amplify-utils";
 import { formatContent } from "@/lib/utils/page-utils";
-
+import { PostCard } from "@/components/posts/Post";import { useReducer } from "react";
 // import styles from "@/app/page.module.css";
-
 
 export default async function Home() {
 
   const { data: posts } =  await client.models.Post.list({
-    selectionSet: ["title", "content", "id", "createdAt"],
+    selectionSet: ["title", "content", "id"],
     authMode: "apiKey",
   })
-
   console.log('posts ', posts); 
 
   return (
@@ -20,13 +18,14 @@ export default async function Home() {
         </div>
         <div className="container-middle">
           {posts && posts.map( (post, idx) => (
-            <div key={idx} className="card">
-              <div className="card-header">{post.title}</div>
-              <div className="card-body">
-                {formatContent(post.content)}
-                <p>{post.createdAt}</p>
-                </div>
-            </div>
+              <PostCard post={post} />
+            // <div key={idx} className="card">
+            //   <div className="card-header">{post.title}</div>
+            //   <div className="card-body">
+            //     {formatContent(post.content)}
+            //     <p>{post.createdAt}</p>
+            //     </div>
+            // </div>
           ))}
         </div>
       </div>
