@@ -36,7 +36,12 @@ export async function getCommentsByPost(paramsId: string) {
     selectionSet: ["content", "post.id", "id"]
   })
   console.log('===== SERVER ACTION: right after fetching comments', comments)
-  const filtered = comments.filter((comment) => comment.post.id === paramsId );
+
+  // TODO: look into data/resource.
+  // CURRENT: not deleting comments that belong to the post
+  // when a post is deleted
+  // TEMP SOLUTION: null check on comment.post
+  const filtered = comments.filter((comment) => (comment.post &&  comment.post.id === paramsId ));
   console.log('===== SERVER ACTION: filtered comments', filtered )
   return filtered;
 }
