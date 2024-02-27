@@ -5,7 +5,10 @@ import NavBar from "../components/nav/NavBar";
 import Auth from "@/components/auth/Auth";
 import { isAuthenticated } from "@/lib/utils/amplify-utils";
 
-const alkatra = Alkatra({ subsets: ["latin"] });
+const alkatra = Alkatra({
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",

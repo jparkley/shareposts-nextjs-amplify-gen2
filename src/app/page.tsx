@@ -15,9 +15,8 @@ export default async function Home() {
         </div>
         <div className="container-middle">
           {posts && posts.map((post, idx) => (
-              <div className="card">
+              <div className="card" key={idx}>
                 <PostCard
-                  key={idx}
                   post={post}
                   isListPage={true}
                 />
