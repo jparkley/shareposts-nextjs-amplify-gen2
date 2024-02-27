@@ -1,6 +1,8 @@
-import { PostCard } from "@/components/posts/PostCard";
 import { client, isAuthenticated } from "@/lib/utils/amplify-utils";
-import { deletePost } from "@/lib/actions/actions";
+import { addComment, deletePost, getCommentsByPost } from "@/lib/actions/actions";
+import { Schema } from "../../../../amplify/data/resource";
+import PostCard from "@/components/posts/PostCard";
+import AddComment from "@/components/posts/AddComment";
 
 // built-in params in Next.js dynamic routing
 type PostParams = {
@@ -9,32 +11,37 @@ type PostParams = {
   }  
 }
 
-const Post = async ({ params }: PostParams ) => {
+const Post = async ({ params }: PostParams ) => {  
 
   if (!params.id) return null;
 
-  const { data } = await client.models.Post.get(
+  const { data: post } = await client.models.Post.get(
     { id: params.id },
     {
       authMode: "apiKey",
       selectionSet: ["id", "title", "content", "createdAt"]
     }
-  );
-  console.log('individual post data', data)
+  );  
+
+  const comments = await getCommentsByPost(params.id)  
 
   return (    
       <div className="container-post">
         <PostCard
-          post={{
-            id:data.id,
-            title:data.title,
-            content:data.content,
-            createdAt: data.createdAt,
-          }}
+          post={post}
           isDetailPage={true}
           isLoggedIn={await isAuthenticated()}
           onDelete={deletePost}
         />
+        <AddComment
+          post={post as Schema["Post"]}
+          addComment={addComment}
+        />
+        <div>
+          {comments && comments.map((comment, idx) => (
+            <div key={idx}>{comment.content}</div>
+          ))}
+        </div>
       </div>
   );
 }

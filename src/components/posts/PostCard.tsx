@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
 import { useRouter } from "next/navigation";
 import { Schema } from "../../../amplify/data/resource"
 import { trimContent } from "@/lib/utils/page-utils";
 
-interface PostProps {
+type PostCardProps = {
   post: Pick<Schema["Post"], "title" | "content" | "id" | "createdAt">;
   isListPage?: boolean; // for List page(s)
   isDetailPage?: boolean; // for Detail page
@@ -12,7 +12,9 @@ interface PostProps {
   onDelete?: (id: string) => void;
 }
 
-export const PostCard = ({ post, isListPage, isDetailPage, isLoggedIn, onDelete }: PostProps) => {
+const PostCard = ({ post, isListPage, isDetailPage, isLoggedIn, onDelete }: PostCardProps) => {
+
+  console.log('--- in PostCard: post', post)
 
   const router = useRouter();
   const showDetail = () => {
@@ -20,8 +22,9 @@ export const PostCard = ({ post, isListPage, isDetailPage, isLoggedIn, onDelete 
   }
 
   const content = isListPage ? trimContent(post.content) : post.content;
+
   return (
-    <div key={post.id}>
+    <div>
       <div className="card-header">{post.title}</div>
       <div className="card-body">
         {content}
@@ -29,14 +32,16 @@ export const PostCard = ({ post, isListPage, isDetailPage, isLoggedIn, onDelete 
           <div>
             <button onClick={showDetail}>Read more</button>
           </div>
-        )}        
-        {isDetailPage && (          
+        )}
+        {isDetailPage && (
           <div className="container-post-bottom">
-            <p>{post.createdAt}</p>        
+            <p>{post.createdAt}</p>
           </div>
         )}
-        {(isLoggedIn && !!onDelete) && <button onClick={() => onDelete}>x</button>}
+        {(isLoggedIn && !!onDelete) && <button onClick={() => onDelete(post.id)}>x</button>}
       </div>
     </div>
   )
 }
+
+export default PostCard;
