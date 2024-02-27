@@ -172,6 +172,7 @@ input, textarea {
 /* input[type=textarea] {} */
 textarea {
   border-radius: 5px 5px 245px 25px/25px 245px 15px 255px;
+  height: 250px;
 }
 
 ::placeholder {
