@@ -23,7 +23,7 @@ export async function deletePost(id: string) {
 export async function addComment(content: string, post: Schema["Post"]) {
   if (content.trim().length === 0) return;
   const { data:comment } = await client.models.Comment.create({
-    post,
+    postCommentsId: post.id, 
     content,
   })
   console.log('===== SERVER ACTION: after creating comment', comment)
