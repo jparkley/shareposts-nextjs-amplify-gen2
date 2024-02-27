@@ -10,7 +10,6 @@ import { navRoutes } from "./constants"
 export default function NavBar ({ isLoggedIn }: { isLoggedIn: boolean }) {
 
   const [ authCheck, SetAuthCheck ] = useState(isLoggedIn);
-  console.log('- authCheck', authCheck)
   const router = useRouter();
 
   useEffect(() => {

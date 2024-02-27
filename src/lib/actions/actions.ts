@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { Schema } from "../../../amplify/data/resource";
 import { client } from "@/lib/utils/amplify-utils";
+import { revalidatePath } from "next/cache";
 
 export async function createPost(formData: FormData) {
   const { data } = await client.models.Post.create({
@@ -16,7 +17,7 @@ export async function createPost(formData: FormData) {
 export async function deletePost(id: string) {
   const { data, errors } = await client.models.Post.delete({ id });
   console.log('===== SERVER ACTION: after deleting Post: data', data, errors);
-  redirect("/");
+  revalidatePath("/");
 }
 
 export async function addComment(content: string, post: Schema["Post"]) {
@@ -26,7 +27,7 @@ export async function addComment(content: string, post: Schema["Post"]) {
     content,
   })
   console.log('===== SERVER ACTION: after creating comment', comment)
-  redirect(`/posts/${post.id}`);
+  revalidatePath(`/posts/${post.id}`);
 }
 
 export async function getCommentsByPost(paramsId: string) {

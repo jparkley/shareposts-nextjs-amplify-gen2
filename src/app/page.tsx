@@ -7,7 +7,6 @@ export default async function Home() {
     selectionSet: ["title", "content", "id", "createdAt"],
     authMode: "apiKey",
   })
-  console.log('in app/page.tsx: posts ', posts);
 
   return (
       <>

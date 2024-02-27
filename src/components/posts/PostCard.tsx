@@ -14,8 +14,6 @@ type PostCardProps = {
 
 const PostCard = ({ post, isListPage, isDetailPage, isLoggedIn, onDelete }: PostCardProps) => {
 
-  console.log('--- in PostCard: post', post)
-
   const router = useRouter();
   const showDetail = () => {
     router.push(`posts/${post.id}`);

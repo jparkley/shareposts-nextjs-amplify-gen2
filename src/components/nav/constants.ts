@@ -8,11 +8,10 @@ export const navRoutes = [
     label: "Add New Post",
     needToBeLogged: true,
   },
-  {
-    href: "/faq",
-    label: "FAQ",
-  },
-
+  // {
+  //   href: "/faq",
+  //   label: "FAQ",
+  // },
 ];
 
 

@@ -33,10 +33,10 @@ const Post = async ({ params }: PostParams ) => {
           isLoggedIn={await isAuthenticated()}
           onDelete={deletePost}
         />
-        <AddComment
+        {await isAuthenticated() && <AddComment
           post={post as Schema["Post"]}
           addComment={addComment}
-        />
+        />}
         <div>
           {comments && comments.map((comment, idx) => (
             <div key={idx}>{comment.content}</div>
