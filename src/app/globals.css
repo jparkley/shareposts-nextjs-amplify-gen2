@@ -285,6 +285,43 @@ button:hover {
   }
 }
 
+.container-post {
+  margin: auto;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+  max-width: 400px;
+  word-wrap: break-word;
+  background-color: #fff;
+}
+
+.container-post-header {
+  padding: 0 1rem;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 2px solid #c0bfbf;
+}
+
+.container-post p {
+  font-size: 0.8rem;
+  color: rgb(59, 59, 59);
+  margin: 10px 0 0;
+}
+
+.container-post-bottom {
+  width: 100%;
+  text-align: right;
+}
+.container-post button {
+  line-height: 1rem;
+}
+
+
 .card {
   font-size: 1.2rem;
   position: relative; 
@@ -314,10 +351,15 @@ button:hover {
   font-family: "system-ui";
 }
 
-.card-body p {
-  font-size: 0.8rem;
-  color: rgb(59, 59, 59);
-  margin: 10px 0 0;
+
+
+.card-body button {
+  border: none;
+  padding: 10px;
+  background: none;
+  color: rgb(46, 46, 46);
+  width: 100%;
+  text-align: right;
 }
 
 span.date {

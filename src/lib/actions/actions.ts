@@ -10,3 +10,10 @@ export async function createPost(formData: FormData) {
   console.log('after create', data)
   redirect("/")
 }
+
+
+export async function deletePost(id: string) {
+  const { data, errors } = await client.models.Post.delete({ id });
+  console.log('after delete: data', data, errors);
+  redirect("/");
+}

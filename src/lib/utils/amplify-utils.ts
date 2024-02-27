@@ -25,6 +25,7 @@ export const isAuthenticated = async () =>
     async operation(contextSpec) {
       try {
         const user = await getCurrentUser(contextSpec);
+        console.log('======= user', user)
         return !!user;
       } catch (error) {
         return false;
