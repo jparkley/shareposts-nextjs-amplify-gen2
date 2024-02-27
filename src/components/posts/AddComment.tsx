@@ -23,9 +23,10 @@ const AddComment = ( { post, addComment }: AddCommentProps ) => {
       <div className="container-comment">
         <form onSubmit={onAdd} className="form-comment">
           <input 
-            type="text" 
-            name="comment" id="comment" 
-            placeholder="add comment" 
+            type="text"
+            name="comment"
+            id="comment"
+            placeholder="add comment"
             value={comment} 
             onChange={(e) => setComment(e.target.value)}
           />
