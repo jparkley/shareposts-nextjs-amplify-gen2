@@ -1,6 +1,6 @@
 
 # Share Posts!
-This app provides functionalities to post ideas / thoughts and share comments.  Create a test account to fully access this app. User management is backed by AWS Cognito providing secure service serverlessly.
+This app provides functionalities to post ideas / thoughts and share comments.  Create a test account to fully access this app. User management is backed by AWS Cognito providing secure sign-in service serverlessly.
 
 ## Development environment
 Amplify Sandbox
@@ -15,17 +15,17 @@ Amplify Sandbox
 <tbody>
  <tr>
 <td align="center">
-<img  style="width:600px" src="https://github.com/jparkley/sharespecial/blob/master/screenshot-sharespecial-01.png"> 
+<img  style="width:500px" src="https://github.com/jparkley/sharespecial/blob/main/screenshot-sharespecial-01.png"> 
 </td>
 </tr>
  <tr>
 <td align="center">
-<img  style="width:300px" src="https://github.com/jparkley/sharespecial/blob/master/screenshot-sharespecial-02.png"> 
+<img  style="width:250px" src="https://github.com/jparkley/sharespecial/blob/main/screenshot-sharespecial-02.png"> 
 </td>
 </tr>
  <tr>
 <td align="center">
-<img  style="width:300px" src="https://github.com/jparkley/sharespecial/blob/master/screenshot-sharespecial-03.png"> 
+<img  style="width:250px" src="https://github.com/jparkley/sharespecial/blob/main/screenshot-sharespecial-03.png"> 
 </td>
 </tr>
 
